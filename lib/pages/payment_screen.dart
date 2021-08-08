@@ -21,6 +21,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         title: Text("Outstanding Bills"),
