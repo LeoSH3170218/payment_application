@@ -1,8 +1,6 @@
 // @dart=2.9
 import 'dart:io';
 
-import 'package:flappy_search_bar/flappy_search_bar.dart';
-import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:payment_application/main.dart';
@@ -40,11 +38,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       child: SafeArea(
                         child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                            child: SearchBar(
-                              searchBarStyle: SearchBarStyle(
-                                  backgroundColor: Color.fromRGBO(220, 224, 234, 1)
+                            child: TextField(
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Color.fromRGBO(220, 224, 234, 1),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black)
+                                ),
+                                prefixIcon: const Icon(
+                                  Icons.search,
+                                  color: Colors.black,
+                                ),
+                                suffixIcon: Icon(
+                                  Icons.clear,
+                                  color: Colors.black,
+                                ),
+
                               ),
-                            )
+
+
+                            ),
                         ),
                       ),
                     ),
