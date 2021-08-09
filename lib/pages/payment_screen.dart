@@ -23,49 +23,30 @@ class _PaymentScreenState extends State<PaymentScreen> {
         backgroundColor: Color.fromRGBO(36, 62, 110, 0.85),
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
         child: Column(
             children: [
-              Container(
-                height: 120,
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: SafeArea(
-                        child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                filled: true,
-                                fillColor: Color.fromRGBO(220, 224, 234, 1),
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black)
-                                ),
-                                prefixIcon: const Icon(
-                                  Icons.search,
-                                  color: Colors.black,
-                                ),
-                                suffixIcon: Icon(
-                                  Icons.clear,
-                                  color: Colors.black,
-                                ),
-
-                              ),
-
-
-                            ),
-                        ),
-                      ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 30),
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromRGBO(220, 224, 234, 1),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)
                     ),
-                  ],
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: Colors.black,
+                    ),
+                    suffixIcon: Icon(
+                      Icons.clear,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
               ),
-
-              Row(
-                children: [
-                  Container(
+              Container(
                     height: 100,
-                    width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(220, 224, 234, 1),
                     ),
@@ -119,38 +100,37 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             ),
                           ],
                         ),
-                        Container(
-                          width: 100,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Due Amount",
+                        Spacer(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                                "Due Amount sdfasdfd",
                                 style: TextStyle(
                                   color: Color.fromRGBO(99, 123, 160, 1),
                                   fontSize: 11,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 overflow: TextOverflow.ellipsis
-                              ),
-                              Text(
+                            ),
+                            Text(
                                 "$billNum1 JOD",
                                 style: TextStyle(
-                                  color: Color.fromRGBO(36, 62, 110, 1),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17
+                                    color: Color.fromRGBO(36, 62, 110, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17
                                 ),
                                 overflow: TextOverflow.ellipsis
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 16,
                         ),
                       ],
                     ),
-                  )
-                ],
-              ),
+                  ),
               SizedBox(
                 height: 16,
               ),
@@ -247,11 +227,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     )
                   ],
                 ),
-
-
               Spacer(),
-
-
               Container(
                 height: 120,
                 width: MediaQuery.of(context).size.width,
@@ -285,7 +261,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                 Column(
                                   children: [
                                     Text(
-                                      calc(this.billNum1, this.billNum2).toString(),
+                                      _calc(this.billNum1, this.billNum2).toString(),
                                       style: TextStyle(
                                           color: Color.fromRGBO(36, 62, 110, 1),
                                           fontWeight: FontWeight.bold,
@@ -312,33 +288,28 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         ],
                       ),
                     ),
-                    Container(
-                      width: 120,
+                    Expanded(
+                      child: Container(
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 20),
+                        padding: const EdgeInsets.only(right: 20, left: 20),
                         child: CustomButton(
                             callback: (){},
                             text: "Pay",
                             color: Color.fromRGBO(36, 62, 110, 1)
                         ),
-                      )
+                      ),
+                      ),
                     ),
                   ],
                 ),
-              )
-
-
-
+              ),
             ],
           )
       ),
-
     );
   }
 
-  static double calc(double billNum1, double billNum2) {
+  double _calc(double billNum1, double billNum2) {
     return billNum2 + billNum1;
   }
-
-
 }
