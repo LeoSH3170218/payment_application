@@ -1,8 +1,5 @@
-// @dart=2.9
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:payment_application/main.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -14,7 +11,6 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   double billNum1 = 120.00;
   double billNum2 = 50.85;
-  //double total = calc(billNum1, billNum2);
 
   @override
   Widget build(BuildContext context) {
