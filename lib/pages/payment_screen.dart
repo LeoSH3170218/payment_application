@@ -23,7 +23,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         backgroundColor: Color.fromRGBO(36, 62, 110, 0.85),
       ),
       body: Container(
-        child: Column(
+          child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 30),
@@ -46,7 +46,99 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ),
               Container(
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(220, 224, 234, 1),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 16,
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Color.fromRGBO(36, 62, 110, 1),
+                      child: Icon(
+                          Icons.check
+                      ),
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                                "Water",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500
+                                ),
+                                overflow: TextOverflow.ellipsis
+                            ),
+                            Text(
+                              " Irbid Water Company",
+                              style: TextStyle(
+                                color: Color.fromRGBO(99, 123, 160, 1),
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Text(
+                            "Account number | 1234567891",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                            "Due Amount sdfasdfd",
+                            style: TextStyle(
+                              color: Color.fromRGBO(99, 123, 160, 1),
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis
+                        ),
+                        Text(
+                            "$billNum1 JOD",
+                            style: TextStyle(
+                                color: Color.fromRGBO(36, 62, 110, 1),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17
+                            ),
+                            overflow: TextOverflow.ellipsis
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  Container(
                     height: 100,
+                    width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(220, 224, 234, 1),
                     ),
@@ -58,7 +150,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         CircleAvatar(
                           backgroundColor: Color.fromRGBO(36, 62, 110, 1),
                           child: Icon(
-                            Icons.check
+                              Icons.check
                           ),
                         ),
                         SizedBox(
@@ -71,107 +163,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             Row(
                               children: [
                                 Text(
-                                  "Water",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                    fontWeight: FontWeight.w500
-                                  ),
-                                  overflow: TextOverflow.ellipsis
+                                    "Internet",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500
+                                    ),
+                                    overflow: TextOverflow.ellipsis
                                 ),
                                 Text(
-                                  " Irbid Water Company",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(99, 123, 160, 1),
-                                      fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Text(
-                              "Account number | 1234567891",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              overflow: TextOverflow.ellipsis
-                            ),
-                          ],
-                        ),
-                        Spacer(),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                                "Due Amount sdfasdfd",
-                                style: TextStyle(
-                                  color: Color.fromRGBO(99, 123, 160, 1),
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                overflow: TextOverflow.ellipsis
-                            ),
-                            Text(
-                                "$billNum1 JOD",
-                                style: TextStyle(
-                                    color: Color.fromRGBO(36, 62, 110, 1),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 17
-                                ),
-                                overflow: TextOverflow.ellipsis
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 16,
-                        ),
-                      ],
-                    ),
-                  ),
-              SizedBox(
-                height: 16,
-              ),
-                Row(
-                  children: [
-                    Container(
-                      height: 100,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(220, 224, 234, 1),
-                      ),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 16,
-                          ),
-                          CircleAvatar(
-                            backgroundColor: Color.fromRGBO(36, 62, 110, 1),
-                            child: Icon(
-                                Icons.check
-                            ),
-                          ),
-                          SizedBox(
-                            width: 16,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                      "Internet",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500
-                                      ),
-                                      overflow: TextOverflow.ellipsis
-                                  ),
-                                  Text(
                                     " Zain Internet Fiber",
                                     style: TextStyle(
                                       color: Color.fromRGBO(99, 123, 160, 1),
@@ -179,10 +179,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                     overflow: TextOverflow.ellipsis
-                                  )
-                                ],
-                              ),
-                              Text(
+                                )
+                              ],
+                            ),
+                            Text(
                                 "Account number | 1234567891",
                                 style: TextStyle(
                                   color: Colors.black,
@@ -190,43 +190,43 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   fontWeight: FontWeight.bold,
                                 ),
                                 overflow: TextOverflow.ellipsis
+                            ),
+                          ],
+                        ),
+                        Container(
+                          width: 100,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Due Amount",
+                                style: TextStyle(
+                                  color: Color.fromRGBO(99, 123, 160, 1),
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: false,
+                              ),
+                              Text(
+                                "$billNum2 JOD",
+                                style: TextStyle(
+                                    color: Color.fromRGBO(36, 62, 110, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: false,
                               ),
                             ],
                           ),
-                          Container(
-                            width: 100,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Due Amount",
-                                  style: TextStyle(
-                                    color: Color.fromRGBO(99, 123, 160, 1),
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                  softWrap: false,
-                                ),
-                                Text(
-                                  "$billNum2 JOD",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(36, 62, 110, 1),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                  softWrap: false,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
               Spacer(),
               Container(
                 height: 120,
@@ -243,7 +243,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                              padding: const EdgeInsets.only(left: 50, top: 30),
+                            padding: const EdgeInsets.only(left: 50, top: 30),
                             child: Text(
                               "Outstanding bills total:",
                               style: TextStyle(
@@ -274,11 +274,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   children: [
                                     Text(
                                         " JOD",
-                                      style: TextStyle(
-                                        color: Color.fromRGBO(36, 62, 110, 1),
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15
-                                      )
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(36, 62, 110, 1),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15
+                                        )
                                     )
                                   ],
                                 )
@@ -290,14 +290,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                     Expanded(
                       child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 20, left: 20),
-                        child: CustomButton(
-                            callback: (){},
-                            text: "Pay",
-                            color: Color.fromRGBO(36, 62, 110, 1)
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20, left: 20),
+                          child: CustomButton(
+                              callback: (){},
+                              text: "Pay",
+                              color: Color.fromRGBO(36, 62, 110, 1)
+                          ),
                         ),
-                      ),
                       ),
                     ),
                   ],
