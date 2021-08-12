@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_application/pages/more_menu_screen.dart';
 import 'package:payment_application/pages/payment_screen.dart';
 
 void main() {
@@ -15,9 +16,10 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         MyHomePage.id:(context) => MyHomePage(title: 'Home',),
-        PaymentScreen.id: (context) => PaymentScreen()
+        PaymentScreen.id: (context) => PaymentScreen(),
+        MoreMenuScreen.id: (context) => MoreMenuScreen()
       },
-      home: MyHomePage(title: 'Home Page'),
+      home: MoreMenuScreen(),
     );
   }
 }
