@@ -11,6 +11,7 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   double billNum1 = 120.00;
   double billNum2 = 50.85;
+  late final List<Widget> entries;
 
   @override
   Widget build(BuildContext context) {

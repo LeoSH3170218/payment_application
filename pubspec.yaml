@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.12.3 <3.0.0"
 
 dependencies:
+  flutter_image_slideshow: ^0.1.1
+  intl: ^0.17.0
   http:
   flutter:
     sdk: flutter
