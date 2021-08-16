@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:payment_application/main.dart' as main;
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class PaymentConfirmation extends StatefulWidget {
   static const String id = "PAYMENT_CONFIRMATION";
@@ -19,6 +17,7 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
     Account(accountID: "1234 - 4567891 - 65", accountName: "second account", balance: 1500.00),
     Account(accountID: "1234 - 4567893 - 45", accountName: "third account", balance: 6000.50)
   ];
+  int currentPos = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +92,6 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
                 ),
               ),
             ),
-            //Spacer(),
 
 
             Row(
@@ -112,78 +110,108 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
                 ),
               ],
             ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: accounts.length,
-                itemBuilder: (BuildContext context, int index){
-                  return Container(
-                    padding: EdgeInsets.only(left: 25, right: 20),
-                    child: Card(
-                        shadowColor: Colors.grey,
-                        color: Color.fromRGBO(243, 246, 249, 1),
-                        semanticContainer: true,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  accounts[index].accountName,
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  accounts[index].accountID,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 200,
-                                ),
-                                Text(
-                                  accounts[index].balance.toString() + " JOD",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromRGBO(36, 62, 110, 1),
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
 
-                  );
-                }
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 100.0,
+                enableInfiniteScroll: false,
+                  onPageChanged: (i, reason) {
+                    setState(() {
+                      currentPos = i;
+                    });
+                  }
               ),
+
+              items: accounts.map((account) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+
+                        child: Card(
+                          shadowColor: Colors.grey,
+                          color: Color.fromRGBO(243, 246, 249, 1),
+                          semanticContainer: true,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    account.accountName,
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    account.accountID,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  // SizedBox(
+                                  //   width: 190,
+                                  // ),
+                                  Spacer(),
+                                  Text(
+                                      account.balance.toString() + " JOD",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromRGBO(36, 62, 110, 1),
+                                        fontSize: 20
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                    );
+                  },
+                );
+              }).toList(),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: accounts.map((url) {
+                int index = accounts.indexOf(url);
+                return Container(
+                  width: 8.0,
+                  height: 8.0,
+                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: currentPos == index
+                        ? Color.fromRGBO(0, 0, 0, 0.9)
+                        : Color.fromRGBO(0, 0, 0, 0.4),
+                  ),
+                );
+              }).toList(),
+            ),
+
             SizedBox(
               height: 50,
             ),
