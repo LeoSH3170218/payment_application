@@ -5,26 +5,28 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class PaymentConfirmation extends StatefulWidget {
   static const String id = "PAYMENT_CONFIRMATION";
+
   @override
   _PaymentConfirmationState createState() => _PaymentConfirmationState();
 }
 
 class _PaymentConfirmationState extends State<PaymentConfirmation> {
-  var day = DateFormat('EEEE').format(DateTime.now());
-  String currentTime = DateFormat('kk:mm').format(DateTime.now());
-  List<Account> accounts = [
+  var _day = DateFormat('EEEE').format(DateTime.now());
+  String _currentTime = DateFormat('kk:mm').format(DateTime.now());
+  List<Account> _accounts = [
     Account(accountID: "1234 - 5678945 - 44", accountName: "first account", balance: 2600.00),
     Account(accountID: "1234 - 4567891 - 65", accountName: "second account", balance: 1500.00),
     Account(accountID: "1234 - 4567893 - 45", accountName: "third account", balance: 6000.50)
   ];
-  int currentPos = 0;
+  int _currentPos = 0;
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: Text("$day, $currentTime"),
+        title: Text("$_day, $_currentTime"),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(36, 62, 110, 0.85),
         actions: [
@@ -40,10 +42,7 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
           ),
         ],
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+      body: ListView(
             children: [
               SizedBox(
                 height: 20,
@@ -65,6 +64,7 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
               ),
               Text(
                 "Arab bank",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(36, 62, 110, 0.85),
@@ -73,6 +73,7 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
               ),
               Text(
                 "sent you a payment request",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color.fromRGBO(99, 123, 160, 1),
                     fontSize: 15
@@ -81,37 +82,31 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                height: 150,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 30, right: 30),
-                  child: Text(
-                    "message from mical something like that in your bank"
-                        " account please confirm the payment "
-                        "finish everything",
-                    style: TextStyle(
-                      color: Colors.black54,
-                    ),
+              Padding(
+                  padding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
+                  child: Wrap(
+                    children: [
+                      Text(
+                        "message from mical something like that in your bank"
+                            " account please confirm the payment ",
+                        style: TextStyle(
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Choose an Account",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Color.fromRGBO(36, 62, 110, 0.85),
-                      ),
-                    ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  "Choose an Account",
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Color.fromRGBO(36, 62, 110, 0.85),
                   ),
-                ],
+                ),
               ),
 
               CarouselSlider(
@@ -120,18 +115,16 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
                     enableInfiniteScroll: false,
                     onPageChanged: (i, reason) {
                       setState(() {
-                        currentPos = i;
+                        _currentPos = i;
                       });
                     }
                 ),
-
-                items: accounts.map((account) {
+                items: _accounts.map((account) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 5.0),
-
                         child: Card(
                           shadowColor: Colors.grey,
                           color: Color.fromRGBO(243, 246, 249, 1),
@@ -171,11 +164,8 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  // SizedBox(
-                                  //   width: 190,
-                                  // ),
-                                  Spacer(),
                                   Text(
                                     account.balance.toString() + " JOD",
                                     style: TextStyle(
@@ -199,15 +189,15 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: accounts.map((url) {
-                  int index = accounts.indexOf(url);
+                children: _accounts.map((url) {
+                  int index = _accounts.indexOf(url);
                   return Container(
                     width: 8.0,
                     height: 8.0,
                     margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: currentPos == index
+                      color: _currentPos == index
                           ? Color.fromRGBO(0, 0, 0, 0.9)
                           : Color.fromRGBO(0, 0, 0, 0.4),
                     ),
@@ -218,78 +208,71 @@ class _PaymentConfirmationState extends State<PaymentConfirmation> {
               SizedBox(
                 height: 50,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 40),
-                  ),
-                  Expanded(
-                    child: Container(
-                      width: 150,
-                      height: 50,
-                      child: OutlinedButton(
-                        onPressed: (){},
-                        child: Text(
-                          "Decline",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Color.fromRGBO(36, 62, 110, 1),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: 150,
+                        height: 50,
+                        child: OutlinedButton(
+                          onPressed: (){},
+                          child: Text(
+                            "Decline",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromRGBO(36, 62, 110, 1),
+                            ),
                           ),
-                        ),
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          side: BorderSide(
-                            width: 2,
-                            color: Color.fromRGBO(36, 62, 110, 1),
+                          style: OutlinedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            side: BorderSide(
+                              width: 2,
+                              color: Color.fromRGBO(36, 62, 110, 1),
+
+                            ),
 
                           ),
-
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                    child: Container(
-                      width: 150,
-                      height: 50,
-                      child: OutlinedButton(
-                        onPressed: (){},
-                        child: Text(
-                          "Confirm",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
+                    SizedBox(
+                      width: 40,
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: 150,
+                        height: 50,
+                        child: OutlinedButton(
+                          onPressed: (){},
+                          child: Text(
+                            "Confirm",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
+                          style: OutlinedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            backgroundColor: Color.fromRGBO(36, 62, 110, 1),
                           ),
-                          backgroundColor: Color.fromRGBO(36, 62, 110, 1),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 40),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(
                 height: 20,
               )
-
             ],
           ),
-        ),
-
-      ),
     );
   }
 }
@@ -298,10 +281,11 @@ class Account{
   String accountName;
   String accountID;
   double balance;
+
   Account({
     required this.accountID,
     required this.accountName,
     required this.balance
-});
+  });
 
 }
