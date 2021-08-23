@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:payment_application/pages/cart_screen.dart';
 import 'package:payment_application/pages/more_menu_screen.dart';
 import 'package:payment_application/pages/payment_confirmation.dart';
 import 'package:payment_application/pages/payment_screen.dart';
+import 'package:payment_application/pages/product_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
         MyHomePage.id:(context) => MyHomePage(title: 'Home',),
         PaymentScreen.id: (context) => PaymentScreen(),
         MoreMenuScreen.id: (context) => MoreMenuScreen(),
-        PaymentConfirmation.id: (context) => PaymentConfirmation()
+        PaymentConfirmation.id: (context) => PaymentConfirmation(),
+        ProductScreen.id: (context) => ProductScreen(),
       },
       home: MyHomePage(title: 'Home Page'),
     );
@@ -73,6 +76,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.of(context).pushNamed(PaymentConfirmation.id);
                 },
                 text: "Proceed to confirmation",
+                color: Color.fromRGBO(36, 62, 110, 0.85)
+            ),
+            CustomButton(
+                callback: () {
+                  //print(defaultColor);
+                  Navigator.of(context).pushNamed(ProductScreen.id);
+                },
+                text: "Products",
                 color: Color.fromRGBO(36, 62, 110, 0.85)
             ),
           ],
